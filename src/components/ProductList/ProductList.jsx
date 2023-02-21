@@ -16,7 +16,7 @@ const products = [
 
 const ProductList = () => {
   const [addedItems, setAddedItems] = useState([]);
-  const {tg} = useTelegram
+  const {tg} = useTelegram()
 
   const onAdd = (product) => {
     const alreadyAdded = addedItems.find(item => item.id === product.id);
@@ -31,10 +31,7 @@ const ProductList = () => {
     setAddedItems(newItems)
 
     if (newItems.length === 0) {
-      tg.MainButton.show()
-      tg.MainButton.setParams({
-        text: `Купить 12345`
-      })
+      tg.MainButton.hide()
     } else {
       tg.MainButton.show()
       tg.MainButton.setParams({
