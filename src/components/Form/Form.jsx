@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useState } from "react";
 import { useTelegram } from "../../hooks/useTelegram";
 import '../Form/Form.css'
@@ -8,6 +8,24 @@ const Form = () => {
   const [city, setCity] = useState('')
   const [subject, setSubject] = useState('physical')
   const {tg} = useTelegram()
+
+  const onSendData = useCallback(() => {
+    const data = {
+      country,
+      city,
+      subject
+    }
+    tg.sendData(JSON.stringify(data))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [country, city, subject])
+
+  useEffect(() => {
+    tg.onEvent('mainButtonClicked', onSendData)
+    return () => {
+      tg.offEvent('mainButtonClicked', onSendData)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onSendData])
 
   useEffect(() => {
     tg.MainButton.setParams({
