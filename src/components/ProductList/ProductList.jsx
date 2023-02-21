@@ -31,7 +31,10 @@ const ProductList = () => {
     setAddedItems(newItems)
 
     if (newItems.length === 0) {
-      tg.MainButton.hide()
+      tg.MainButton.show()
+      tg.MainButton.setParams({
+        text: `Купить 12345`
+      })
     } else {
       tg.MainButton.show()
       tg.MainButton.setParams({
