@@ -11,7 +11,7 @@ const Form = () => {
 
   useEffect(() => {
     tg.MainButton.setParams({
-      text: 'Отправить данные'
+      text: 'Отправить информацию'
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
