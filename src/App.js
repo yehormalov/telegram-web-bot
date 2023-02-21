@@ -9,12 +9,13 @@ function App() {
 
   useEffect(() => {
     tg.ready()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <div className='App'>
       <Header />
-      <Button onClick={onToggleButton}>togglee</Button>
+      <Button onClick={onToggleButton}>toggle</Button>
     </div>
   );
 }
